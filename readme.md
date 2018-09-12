@@ -1,0 +1,1 @@
+Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications by leveraging service workers.
