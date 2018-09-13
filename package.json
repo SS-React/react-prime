@@ -15,13 +15,28 @@
     "url": "git+https://github.com/andwong91/ReactFirst.git"
   },
   "keywords": [
-    "React",
-    "SSR"
+    "react",
+    "ssr",
+    "server side rendering",
+    "react router",
+    "isomorphic",
+    "universal"
   ],
   "author": "SS-React",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andwong91/ReactFirst/issues"
   },
-  "homepage": "https://github.com/andwong91/ReactFirst#readme"
+  "homepage": "https://github.com/andwong91/ReactFirst#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
 }
