@@ -1,0 +1,27 @@
+{
+  "name": "react-first",
+  "version": "1.0.0",
+  "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andwong91/ReactFirst.git"
+  },
+  "keywords": [
+    "React",
+    "SSR"
+  ],
+  "author": "SS-React",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andwong91/ReactFirst/issues"
+  },
+  "homepage": "https://github.com/andwong91/ReactFirst#readme"
+}
