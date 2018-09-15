@@ -1,5 +1,4 @@
 const getServerScript = userInput => `
-import 'babel-polyfill';
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -28,7 +27,7 @@ app.get('*', (req, res) => {
       </head>
       <body>
         <div id="root">
-          ${content}
+          \${content}\
         </div>
         <script src="main.js"></script>
         <script src="client_bundle.js"></script>
@@ -40,10 +39,8 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(\`App running ${PORT}\`);
+  console.log(\`App running \${PORT}\`);
 });
 `;
 
-module.exports = {
-  getServerScript,
-}
+module.exports = getServerScript;
