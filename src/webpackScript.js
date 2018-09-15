@@ -31,6 +31,4 @@ module.exports = {
   externals: [webpackNodeExternals()]
 }`;
 
-module.exports = {
-  getWebpackScript,
-};
+module.exports = getWebpackScript;
