@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/andwong91/ReactFirst/issues"
   },
-  "homepage": "https://github.com/andwong91/ReactFirst#readme"
+  "homepage": "https://github.com/andwong91/ReactFirst#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
 }
