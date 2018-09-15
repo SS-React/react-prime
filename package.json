@@ -4,11 +4,14 @@
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "index.js",
   "directories": {
+    "assets": "assets",
+    "build": "build",
     "lib": "lib",
+    "src": "src",
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,9 @@
     "server side rendering",
     "react router",
     "isomorphic",
-    "universal"
+    "universal",
+    "service workers",
+    "caching"
   ],
   "author": "SS-React",
   "license": "MIT",
@@ -37,6 +42,7 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "jest": "^23.6.0"
   }
 }
