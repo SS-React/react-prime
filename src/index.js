@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDomServer = require('react-dom/server');
+const ReactDOMServer = require('react-dom/server');
 const { StaticRouter } = require('react-router-dom');
 const fs = require('fs');
 
