@@ -4,19 +4,32 @@
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "index.js",
   "directories": {
+    "assets": "assets",
+    "build": "build",
     "lib": "lib",
+    "src": "src",
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "cliTest":"echo bash && node ./cli/cliMain.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andwong91/ReactFirst.git"
   },
+  "bin": {
+    "ReactFirst": "./cli/index.js"
+  },
   "keywords": [
-    "React",
-    "SSR"
+    "react",
+    "ssr",
+    "server side rendering",
+    "react router",
+    "isomorphic",
+    "universal",
+    "service workers",
+    "caching"
   ],
   "author": "SS-React",
   "license": "MIT",
@@ -25,6 +38,28 @@
   },
   "homepage": "https://github.com/andwong91/ReactFirst#readme",
   "dependencies": {
-    "jest": "^23.6.0"
+    "babel-core": "^6.26.3",
+    "chalk": "^2.4.1",
+    "colors": "^1.3.2",
+    "commander": "^2.18.0",
+    "express": "^4.16.3",
+    "figlet": "^1.2.0",
+    "fs": "0.0.1-security",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.0",
+    "inquirer-checkbox-plus-prompt": "^1.0.1",
+    "nodemon": "^1.18.4",
+    "path": "^0.12.7",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^23.6.0",
+    "supertest": "^3.3.0"
   }
 }
