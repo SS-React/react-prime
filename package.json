@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "jest",
-    "cliTest":"echo bash && node ./cli/cliMain.js"
+    "cliTest": "echo bash && node ./cli/cliMain.js"
   },
   "repository": {
     "type": "git",
