@@ -1,5 +1,5 @@
-import getServerScript from './../src/serverScript'
-import getWebpackScript from './../src/webpackScript';
+import getServerScript from '../lib/serverScript'
+import getWebpackScript from '../lib/webpackScript';
 
 describe(`Testing ./src files`, () => {
   describe(`serverScript.js`, () => {
