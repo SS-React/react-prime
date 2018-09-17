@@ -13,6 +13,7 @@ const init = (userInput) => {
   config.App = userInput.App;
   // id is the id attribute on the div that the React components are rendered on
   config.id = userInput.id;
+  return config;
 };
 
 const serve = (req, res) => {
