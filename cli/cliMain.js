@@ -7,7 +7,8 @@ const cliQuestions = require('./cliQuestions.js');
 const answersList = [];
 
 
-// inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt')); // regiesters checkboxPlus plugin allowing pretty drop down menus
+// inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'));
+// regiesters checkboxPlus plugin allowing pretty drop down menus
 
 // console.log(figlet.fontsSync()); // gives list of available fonts
 
