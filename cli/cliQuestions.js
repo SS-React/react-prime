@@ -1,17 +1,35 @@
 const inquirer = require('inquirer');
+const chalk = require('chalk');
+const glob = require('glob');
+const cliFileMethods = require('./cliFileMethods.js');
 
-const cliQuestions = {};
+inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 
-cliQuestions.getProjectInfo = [
+const fileDir = glob.sync('**/*.js', { ignore: 'node_modules/**' });
+
+const cliQuestions = [
   {
-    type: 'input', //type designates what type of prompt the user sees, creates a prompt that takes text as an answer
+    type: 'input', // type designates what type of prompt the user sees, creates a prompt that takes text as an answer
     name: 'projectName', // name is the property the answer to this prompt is saved as
-    message: 'Input your project name', // message is what the user sees on screen
+    message: chalk.red('Input your project name'), // message is what the user sees on screen
   },
   {
-    type: 'checkbox',  //creates a list of items that can be toggled on or off
-    message: 'What features would you like added to your project?',
+    type: 'autocomplete',
+    name: 'entryPoint',
+    suggestOnly: true,
+    message: chalk.red('Where is your entry point?'),
+    source: cliFileMethods.searchFiles,
+    validate(answer) {
+      if (!fileDir.includes(answer)) {
+        return 'Invalid entry point';
+      }
+      return true;
+    },
+  },
+  {
+    type: 'checkbox', // creates a list of items that can be toggled on or off
     name: 'features',
+    message: 'What features would you like added to your project?',
     choices: [
       new inquirer.Separator('Toggle features on or off(stretch stuff)'),
       {
@@ -24,11 +42,17 @@ cliQuestions.getProjectInfo = [
         name: 'CodeSplitting with React Router',
       },
     ],
-
+    validate(answer) {
+      // checking to see if the user selected a drop down menu
+      if (answer.length === 0) {
+        return 'You must make a selection.';
+      }
+      return true;
+    },
   },
   {
-    type: 'list',  //creates a selectable list of answers that is selectable with the arrow keys
-    message: 'What functionality would you like to add to your project?',
+    type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
+    message: chalk.red('What functionality would you like to add to your project?'),
     name: 'mainFunctionalitySelector',
     choices: [
       {
@@ -41,17 +65,10 @@ cliQuestions.getProjectInfo = [
         name: 'ServiceWorker caching for offline functionality',
       },
     ],
-    validate(answer) {
-      // checking to see if the user selected a drop down menu
-      if (answer.length === 0) {
-        return 'You must make a selection.';
-      }
-      return true;
-    },
   },
   {
     type: 'list',
-    message: 'Would you like to save the test file?',
+    message: chalk.red('Would you like to save the test file?'),
     name: 'testFileSave',
     choices: [
       {

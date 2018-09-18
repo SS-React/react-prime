@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "jest",
-    "cliTest":"echo bash && node ./cli/cliMain.js"
+    "cliTest": "echo bash && node ./cli/cliMain.js",
+    "cliFont": "nodemon ./cli/cliMain.js"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,9 @@
     "figlet": "^1.2.0",
     "fs": "0.0.1-security",
     "fuzzy": "^0.1.3",
+    "glob": "^7.1.3",
     "inquirer": "^6.2.0",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "inquirer-checkbox-plus-prompt": "^1.0.1",
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
