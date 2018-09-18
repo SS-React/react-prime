@@ -4,27 +4,27 @@ const { cliFileMethods, folderDir, fileList, htmlList } = require('./cliFileMeth
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 
 const cliQuestions = [
-  {
-    type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
-    message: 'What functionality would you like to add to your project? (select one)',
-    name: 'mainFunctionalitySelector',
-    choices: [
-      {
-        name: 'Server-side rendering only',
-      },
-      {
-        name: 'Service worker caching for offline functionality',
-      },
-      {
-        name: 'Server-side rendering with service worker caching for offline functionality',
-      },
-    ],
-  },
+  // {
+  //   type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
+  //   message: 'What functionality would you like to add to your project? (select one)',
+  //   name: 'mainFunctionalitySelector',
+  //   choices: [
+  //     {
+  //       name: 'Server-side rendering only',
+  //     },
+  //     {
+  //       name: 'Service worker caching for offline functionality',
+  //     },
+  //     {
+  //       name: 'Server-side rendering with service worker caching for offline functionality',
+  //     },
+  //   ],
+  // },
   {
     type: 'autocomplete',
-    name: 'bundlePath',
+    name: 'static',
     suggestOnly: true,
-    message: chalk.red('Select the directory containing your bundle:'),
+    message: chalk.red('Type the directory containing your bundle:'),
     source: cliFileMethods.searchFolders,
     validate(answer) {
       if (!folderDir.includes(answer)) {
@@ -35,9 +35,9 @@ const cliQuestions = [
   },
   {
     type: 'autocomplete',
-    name: 'rootComponent',
+    name: 'component',
     suggestOnly: true,
-    message: chalk.red('Select the path of your root component:'),
+    message: chalk.red('Type the path of your root component:'),
     source: cliFileMethods.searchFiles,
     validate(answer) {
       if (!fileList.includes(answer)) {
@@ -48,9 +48,9 @@ const cliQuestions = [
   },
   {
     type: 'autocomplete',
-    name: 'rootDivHtml',
+    name: 'rootHtml',
     suggestOnly: true,
-    message: chalk.red('Select the HTML file containing the root div:'),
+    message: chalk.red('Type the path of the HTML file containing the root div:'),
     source: cliFileMethods.searchHtml,
     validate(answer) {
       if (!htmlList.includes(answer)) {
@@ -71,19 +71,19 @@ const cliQuestions = [
       return true;
     },
   },
-  {
-    type: 'list',
-    message: chalk.red('Would you like to save the test file? (for developement only)'),
-    name: 'testFileSave',
-    choices: [
-      {
-        name: 'YES',
-      },
-      {
-        name: 'NO',
-      },
-    ],
-  },
+  // {
+  //   type: 'list',
+  //   message: chalk.red('Would you like to save the test file? (for developement only)'),
+  //   name: 'testFileSave',
+  //   choices: [
+  //     {
+  //       name: 'YES',
+  //     },
+  //     {
+  //       name: 'NO',
+  //     },
+  //   ],
+  // },
     // {
   //   type: 'checkbox',  //creates a list of items that can be toggled on or off
   //   message: 'What features would you like to add to your project? (select multiple)',
