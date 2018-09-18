@@ -6,12 +6,6 @@ const cliQuestions = require('./cliQuestions.js');
 
 const answersList = [];
 
-
-// inquirer.registerPrompt('checkbox-plus', require('inquirer-checkbox-plus-prompt'));
-// regiesters checkboxPlus plugin allowing pretty drop down menus
-
-// console.log(figlet.fontsSync()); // gives list of available fonts
-
 // chalk adds color and weight ton cli fonts
 console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React First', {
   // chalk is setting the color etc. of large text and background, figlet is making the large text
@@ -20,7 +14,7 @@ console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React First', {
   verticalLayout: 'default',
 })));
 
-inquirer.prompt(cliQuestions.getProjectInfo).then((answers) => {
+inquirer.prompt(cliQuestions).then((answers) => {
   // removes whitespace of the answer
   answers.projectName = answers.projectName.trim();
 
