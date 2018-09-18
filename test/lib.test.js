@@ -20,12 +20,12 @@ describe(`Testing ./lib files`, () => {
   });
   describe(`webpackScript.js`, () => {
     test(`should return a string`, () => {
-      expect(typeof getWebpackScript(1)).toBe('string');
+      expect(typeof getWebpackScript()).toBe('string');
     });
-    test(`should process user input`, () => {
-      const compare = getWebpackScript('a');
-      const entryFile = compare.match(/entry: path.join\(__dirname, '..\/a'\)/).join(' ');
-      expect(entryFile).toBe(`entry: path.join(__dirname, '../a')`);
-    });
+    // test(`should process user input`, () => {
+    //   const compare = getWebpackScript('a');
+    //   const entryFile = compare.match(/entry: path.join\(__dirname, '..\/a'\)/).join(' ');
+    //   expect(entryFile).toBe(`entry: path.join(__dirname, '../a')`);
+    // });
   });
 });

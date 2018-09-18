@@ -1,5 +1,5 @@
 {
-  "name": "react-first",
+  "name": "react-prime",
   "version": "1.0.0",
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "url": "git+https://github.com/andwong91/ReactFirst.git"
   },
   "bin": {
-    "ReactFirst": "./cli/index.js"
+    "ReactPrime": "./cli/index.js"
   },
   "keywords": [
     "react",
@@ -55,7 +55,8 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "shelljs": "^0.8.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
