@@ -31,11 +31,28 @@ const serve = (req, res) => {
     res.status = 302;
     res.redirect(context.url);
   } else {
+    // read from the html file specified by the user
     fs.readFile(config.html, 'utf-8', (err, data) => {
       if (err) throw err;
-      // NOTE: this assumes that the div is empty
-      const regEx = new RegExp(`<div id="${config.id}"></div>`, 'gi');
-      const document = data.replace(regEx, `<div id="${config.id}">${ssrComponent}</div>`);
+      /*
+        (?<=<div id="x">)(.*?)(?=<\/div>)
+        this regular expression selects all content within the div with an id of "x"
+        (?<= x) specifies the starting point for the regEx match
+          - in this case, it looks for all content after <div id="x">
+        (?=<\/div>) specifies the ending point for the regEx match
+          - in this case, it stops at a closing div tag (</div>)
+          - the '\' is an escape character
+        (.*?) specifies to stop on the first match specified by (?=)
+          - in this case, it will stop on the first </div> it encounters
+      */
+      const regEx = new RegExp(`(?<=<div id="${config.id}">)(.*?)(?=<\/div>)`);
+      // find the contents of the div with the id specified by the user
+      // match returns an array that matches the regex, join is to turn it back into a string
+      const inner = data.match(regEx).join('');
+      // finds the div with config.id and all of its inner contents
+      const innerRegEx = new RegExp(`<div id="${config.id}">${inner}<\/div>`);
+      // replaces the contents of the div with the SSR component
+      const document = data.replace(innerRegEx, `<div id="${config.id}">${ssrComponent}</div>`);
       res.write(document);
       res.end();
     });
