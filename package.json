@@ -13,9 +13,7 @@
   "scripts": {
     "test": "jest",
     "cliTest": "echo bash && node ./cli/cliMain.js",
-    "cliFont": "nodemon ./cli/cliMain.js",
-    "prime:build": "webpack --config primeWebpack.js --watch",
-    "prime:start": "nodemon primeServer.js"
+    "cliFont": "nodemon ./cli/cliMain.js"
   },
   "repository": {
     "type": "git",
