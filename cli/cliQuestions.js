@@ -1,15 +1,6 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const glob = require('glob');
-const cliFileMethods = require('./cliFileMethods.js');
-
-const folderDir = glob.sync('**/*/', { ignore: 'node_modules/**' }).map((ele) => {
-  const newDir = `./${ele.slice(0, -1)}`;
-  return newDir;
-});
-const fileList = glob.sync('**/*', { ignore: 'node_modules/**', nodir: true });
-const htmlList = glob.sync('**/*.html', { ignore: 'node_modules/**' });
-
+const { cliFileMethods, folderDir, fileList, htmlList } = require('./cliFileMethods');
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 
 const cliQuestions = [

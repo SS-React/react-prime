@@ -47,4 +47,9 @@ cliFileMethods.searchHtml = (answers, input) => {
   }));
 };
 
-module.exports = cliFileMethods;
+module.exports = {
+  cliFileMethods,
+  folderDir,
+  fileList,
+  htmlList,
+}
