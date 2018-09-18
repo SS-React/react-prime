@@ -1,7 +1,7 @@
 import getServerScript from '../lib/serverScript'
 import getWebpackScript from '../lib/webpackScript';
 
-describe(`Testing ./src files`, () => {
+describe(`Testing ./lib files`, () => {
   describe(`serverScript.js`, () => {
     test(`should return a string`, () => {
       expect(typeof getServerScript({})).toBe('string');

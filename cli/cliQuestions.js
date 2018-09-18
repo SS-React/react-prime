@@ -16,19 +16,19 @@ cliQuestions.getProjectInfo = [
     },
   },
   {
-    type: 'checkbox', // creates a list of items that can be toggled on or off
-    message: 'What features would you like added to your project?',
+    type: 'checkbox',  //creates a list of items that can be toggled on or off
+    message: 'What features would you like to add to your project? (select multiple)',
     name: 'features',
     choices: [
-      new inquirer.Separator('Toggle features on or off(stretch stuff)'),
+      new inquirer.Separator('Toggle features on or off (stretch stuff)'),
       {
-        name: 'Add Service Worker Children',
+        name: 'Add service worker children',
       },
       {
         name: 'Add indexDb caching',
       },
       {
-        name: 'CodeSplitting with React Router',
+        name: 'Code splitting with React Router',
       },
     ],
     validate(answer) {
@@ -40,18 +40,18 @@ cliQuestions.getProjectInfo = [
     },
   },
   {
-    type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
-    message: 'What functionality would you like to add to your project?',
+    type: 'list',  //creates a selectable list of answers that is selectable with the arrow keys
+    message: 'What functionality would you like to add to your project? (select one)',
     name: 'mainFunctionalitySelector',
     choices: [
       {
-        name: 'Serverside rendering with ServiceWorker Caching for offline functionality',
+        name: 'Server-side rendering only',
       },
       {
-        name: 'Serverside rendering only',
+        name: 'Service worker caching for offline functionality',
       },
       {
-        name: 'ServiceWorker caching for offline functionality',
+        name: 'Server-side rendering with service worker caching for offline functionality',
       },
     ],
   },
