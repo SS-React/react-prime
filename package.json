@@ -2,7 +2,7 @@
   "name": "react-prime",
   "version": "1.0.0",
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
-  "main": "index.js",
+  "main": "./cli/cli.js",
   "directories": {
     "assets": "assets",
     "build": "build",
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "jest",
     "cliTest": "echo bash && node ./cli/cliMain.js",
-    "cliFont": "nodemon ./cli/cliMain.js",
+    "cliFont": "nodemon ./cli/cli.js",
     "prime:build": "webpack --config primeWebpack.js --watch",
     "prime:start": "nodemon primeServer.js"
   },
