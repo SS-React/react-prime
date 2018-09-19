@@ -13,14 +13,16 @@
   "scripts": {
     "test": "jest",
     "cliTest": "echo bash && node ./cli/cliMain.js",
-    "cliFont": "nodemon ./cli/cliMain.js"
+    "cliFont": "nodemon ./cli/cliMain.js",
+    "prime:build": "webpack --config primeWebpack.js --watch",
+    "prime:start": "nodemon primeServer.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andwong91/ReactFirst.git"
   },
   "bin": {
-    "ReactPrime": "./cli/index.js"
+    "prime": "./cli/cli.js"
   },
   "keywords": [
     "react",
