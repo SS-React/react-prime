@@ -10,7 +10,7 @@ const getServerScript = require('../lib/serverScript.js');
 const getWebpackScript = require('../lib/webpackScript.js');
 
 // chalk adds color and weight ton cli fonts
-console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React First', {
+console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
   // chalk is setting the color etc. of large text and background, figlet is making the large text
   font: 'Big',
   horizontalLayout: 'default',
