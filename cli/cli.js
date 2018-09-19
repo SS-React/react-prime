@@ -1,11 +1,13 @@
+#!/usr/bin/env node
+
 const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const fs = require('fs');
 const shell = require('shelljs');
 const cliQuestions = require('./cliQuestions.js');
-const getServerScript = require('./../lib/serverScript.js');
-const getWebpackScript = require('./../lib/webpackScript.js');
+const getServerScript = require('../lib/serverScript.js');
+const getWebpackScript = require('../lib/webpackScript.js');
 
 // chalk adds color and weight ton cli fonts
 console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React First', {
@@ -31,6 +33,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
     shell.exec('npm run prime:start');
   });
+
   // if (answers.testFileSave === 'YES') {
   //   // writes the file to disk if answer is yes+
   //   fs.writeFile(fileName, JSON.stringify(answers, '', 2), 'utf8', (err) => {
