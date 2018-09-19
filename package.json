@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "jest",
-    "cliTest": "echo bash && node ./cli/cliMain.js",
+    "cliTest": "echo bash && node ./cli/cli.js",
     "cliFont": "nodemon ./cli/cli.js",
     "prime:build": "webpack --config primeWebpack.js --watch",
     "prime:start": "nodemon primeServer.js"

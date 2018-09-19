@@ -4,22 +4,22 @@ const { cliFileMethods, folderDir, fileList, htmlList } = require('./cliFileMeth
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 
 const cliQuestions = [
-  // {
-  //   type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
-  //   message: 'What functionality would you like to add to your project? (select one)',
-  //   name: 'mainFunctionalitySelector',
-  //   choices: [
-  //     {
-  //       name: 'Server-side rendering only',
-  //     },
-  //     {
-  //       name: 'Service worker caching for offline functionality',
-  //     },
-  //     {
-  //       name: 'Server-side rendering with service worker caching for offline functionality',
-  //     },
-  //   ],
-  // },
+  {
+    type: 'list', // creates a selectable list of answers that is selectable with the arrow keys
+    message: 'What functionality would you like to add to your project? (select one)',
+    name: 'choiceInstall',
+    choices: [
+      {
+        name: 'Server-side rendering only',
+      },
+      {
+        name: 'Service worker caching for offline functionality',
+      },
+      {
+        name: 'Server-side rendering with service worker caching for offline functionality',
+      },
+    ],
+  },
   {
     type: 'autocomplete',
     name: 'static',
@@ -84,7 +84,7 @@ const cliQuestions = [
   //     },
   //   ],
   // },
-    // {
+  // {
   //   type: 'checkbox',  //creates a list of items that can be toggled on or off
   //   message: 'What features would you like to add to your project? (select multiple)',
   //   name: 'features',

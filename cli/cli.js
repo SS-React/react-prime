@@ -23,22 +23,35 @@ inquirer.prompt(cliQuestions).then((answers) => {
 
   // appends json to the name of project that the user specified
   const fileName = `${answers.projectName}.json`;
-  fs.writeFileSync('primeServer.js', getServerScript(answers));
-  fs.writeFileSync('primeWebpack.js', getWebpackScript());
-  fs.readFile('package.json', 'utf8', (error, result) => {
-    if (error) throw error;
-    const tempObj = Object.assign({}, JSON.parse(result));
-    tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --watch';
-    tempObj.scripts['prime:start'] = `nodemon primeServer.js`;
-    fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
-    shell.exec('npm run prime:start');
-  });
+  function startServer() {
+    fs.writeFileSync('primeServer.js', getServerScript(answers));
+    fs.writeFileSync('primeWebpack.js', getWebpackScript());
+    fs.readFile('package.json', 'utf8', (error, result) => {
+      if (error) throw error;
+      const tempObj = Object.assign({}, JSON.parse(result));
+      tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --watch';
+      tempObj.scripts['prime:start'] = 'nodemon primeServer.js';
+      fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
+      shell.exec('npm run prime:start');
+    });
+  }
+  function installWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(() => {console.log("Service Worker here, ready for duty!")});
+    }
+  }
 
-  // if (answers.testFileSave === 'YES') {
-  //   // writes the file to disk if answer is yes+
-  //   fs.writeFile(fileName, JSON.stringify(answers, '', 2), 'utf8', (err) => {
-  //     if (err) throw err;
-  //     console.log('File Saved!');
-  //   });
-  // }
+  if (answers.choiceInstall === 'Server-side rendering only') {
+    console.log('Starting server...');
+    startServer();
+  } else if (answers.choiceInstall === 'Service worker caching for offline functionality') {
+    console.log('Installing Service Worker...');
+    installWorker();
+  } else {
+    console.log('Starting server and installing Service Worker');
+    installWorker();
+    startServer();
+  }
 });
