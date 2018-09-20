@@ -29,8 +29,9 @@ inquirer.prompt(cliQuestions).then((answers) => {
     if (error) throw error;
     const tempObj = Object.assign({}, JSON.parse(result));
     tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --watch';
-    tempObj.scripts['prime:start'] = `nodemon primeServer.js`;
+    tempObj.scripts['prime:start'] = `nodemon build/primeBundle.js`;
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
+    shell.exec('npm run prime:build');
     shell.exec('npm run prime:start');
   });
 
