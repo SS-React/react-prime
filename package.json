@@ -11,15 +11,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest",
-    "cliTest": "echo bash && node ./cli/cliMain.js",
-    "cliFont": "nodemon ./cli/cli.js",
-    "prime:build": "webpack --config primeWebpack.js --watch",
-    "prime:start": "nodemon primeServer.js --exec babel-node --presets env"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andwong91/ReactFirst.git"
+    "url": "git+https://github.com/andwong91/react-prime.git"
   },
   "bin": {
     "prime": "./cli/cli.js"
@@ -37,9 +33,9 @@
   "author": "SS-React",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andwong91/ReactFirst/issues"
+    "url": "https://github.com/andwong91/react-prime/issues"
   },
-  "homepage": "https://github.com/andwong91/ReactFirst#readme",
+  "homepage": "https://github.com/andwong91/react-prime#readme",
   "dependencies": {
     "babel-core": "*",
     "chalk": "^2.4.1",
