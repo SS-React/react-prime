@@ -11,11 +11,12 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
     libraryTarget: 'commonjs2',
+    publicPath: '/build',
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -32,7 +33,7 @@ module.exports = {
       sourceMap: true,
     }),
     new CompressionPlugin({
-      asset: '[path].gz[query]',
+      filename: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
