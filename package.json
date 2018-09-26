@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andwong91/ReactFirst.git"
+    "url": "git+https://github.com/andwong91/react-prime.git"
   },
   "bin": {
     "prime": "./cli/cli.js"
@@ -37,9 +37,9 @@
   "author": "SS-React",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andwong91/ReactFirst/issues"
+    "url": "https://github.com/andwong91/react-prime/issues"
   },
-  "homepage": "https://github.com/andwong91/ReactFirst#readme",
+  "homepage": "https://github.com/andwong91/react-prime#readme",
   "dependencies": {
     "chalk": "^2.4.1",
     "colors": "^1.3.2",

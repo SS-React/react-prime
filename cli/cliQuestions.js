@@ -1,6 +1,11 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const { cliFileMethods, folderDir, fileList, htmlList } = require('./cliFileMethods');
+
+const packageJson = require('../package.json');
+const {
+ cliFileMethods, folderDir, fileList, htmlList, jsonFile 
+} = require('./cliFileMethods');
+
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
 
 const cliQuestions = [
@@ -20,6 +25,19 @@ const cliQuestions = [
       },
     ],
   },
+  // {
+  //   type: 'autocomplete',
+  //   name: 'static',
+  //   suggestOnly: true,
+  //   message: chalk.red('Type the start script for your developement server (make sure it is not 5001)'),
+  //   source: cliFileMethods.startScripts,
+  //   validate(answer) {
+  //     if (!folderDir.includes(answer)) {
+  //       return 'Invalid entry point';
+  //     }
+  //     return true;
+  //   },
+  // },
   {
     type: 'autocomplete',
     name: 'static',
@@ -28,6 +46,19 @@ const cliQuestions = [
     source: cliFileMethods.searchFolders,
     validate(answer) {
       if (!folderDir.includes(answer)) {
+        return 'Invalid entry point';
+      }
+      return true;
+    },
+  },
+  {
+    type: 'autocomplete',
+    name: 'parseJson',
+    suggestOnly: true,
+    message: chalk.red('Type the path of your package.json'),
+    source: cliFileMethods.parsePackageJson,
+    validate(answer) {
+      if (!jsonFile.includes(answer)) {
         return 'Invalid entry point';
       }
       return true;
@@ -71,19 +102,19 @@ const cliQuestions = [
       return true;
     },
   },
-  // {
-  //   type: 'list',
-  //   message: chalk.red('Would you like to save the test file? (for developement only)'),
-  //   name: 'testFileSave',
-  //   choices: [
-  //     {
-  //       name: 'YES',
-  //     },
-  //     {
-  //       name: 'NO',
-  //     },
-  //   ],
-  // },
+  {
+    type: 'list',
+    message: chalk.red('Would you like to run html comparison?'),
+    name: 'htmlTest',
+    choices: [
+      {
+        name: 'YES',
+      },
+      {
+        name: 'NO',
+      },
+    ],
+  },
   // {
   //   type: 'checkbox',  //creates a list of items that can be toggled on or off
   //   message: 'What features would you like to add to your project? (select multiple)',
