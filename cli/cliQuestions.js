@@ -1,9 +1,8 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 
-const packageJson = require('../package.json');
 const {
- cliFileMethods, folderDir, fileList, htmlList, jsonFile 
+  cliFileMethods, folderDir, fileList, htmlList, startScriptArr,
 } = require('./cliFileMethods');
 
 inquirer.registerPrompt('autocomplete', require('inquirer-autocomplete-prompt'));
@@ -42,7 +41,7 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'static',
     suggestOnly: true,
-    message: chalk.red('Type the directory containing your bundle:'),
+    message: chalk.green('Type the directory containing your bundle:'),
     source: cliFileMethods.searchFolders,
     validate(answer) {
       if (!folderDir.includes(answer)) {
@@ -52,21 +51,19 @@ const cliQuestions = [
     },
   },
   {
-    type: 'autocomplete',
-    name: 'parseJson',
-    suggestOnly: true,
-    message: chalk.red('Type the path of your package.json'),
-    source: cliFileMethods.parsePackageJson,
+    type: 'input',
+    name: 'startScript',
+    message: chalk.green('Type in the name of the npm script that starts your server:'),
     validate(answer) {
-      if (!jsonFile.includes(answer)) {
-        return 'Invalid entry point';
+      if (answer.length === 0) {
+        return 'Enter a valid name';
       }
       return true;
     },
   },
   {
     type: 'list',
-    message: chalk.red('Are you using Redux?'),
+    message: chalk.green('Are you using Redux?'),
     name: 'hasRedux',
     choices: [
       {
@@ -81,8 +78,9 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'store',
     suggestOnly: true,
-    message: chalk.red('Type the path to your store creator:'),
+    message: chalk.green('Type the path to your store creator:'),
     source: cliFileMethods.searchFiles,
+    when: (answers) => (answers.hasRedux === 'Yes') ? true : false,
     validate(answer) {
       if (!fileList.includes(answer)) {
         return 'Invalid entry point';
@@ -94,7 +92,7 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'component',
     suggestOnly: true,
-    message: chalk.red('Type the path of your root component:'),
+    message: chalk.green('Type the path of your root component:'),
     source: cliFileMethods.searchFiles,
     validate(answer) {
       if (!fileList.includes(answer)) {
@@ -107,7 +105,7 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'rootHtml',
     suggestOnly: true,
-    message: chalk.red('Type the path of the HTML file containing the root div:'),
+    message: chalk.green('Type the path of the HTML file containing the root div:'),
     source: cliFileMethods.searchHtml,
     validate(answer) {
       if (!htmlList.includes(answer)) {

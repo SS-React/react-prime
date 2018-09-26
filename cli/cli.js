@@ -4,12 +4,16 @@ const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const fs = require('fs');
+const httpserver = require('http-server')
 const shell = require('shelljs');
 
 const cliQuestions = require('./cliQuestions.js');
-const getServerScript = require('../lib/serverScript.js');
-const getWebpackScript = require('../lib/webpackScript.js');
-const createHtmlScript = require('../lib/createHtml.js');
+const createCompareScript = require('../lib/createCompareHTML.js');
+const createReduxHTMLScript = require('../lib/returnReduxHTML.js');
+const createHTMLScript = require('../lib/returnHTML.js');
+const createIndexScript = require('../lib/index.js');
+const createServerScript = require('../lib/server.js');
+
 
 // chalk adds color and weight ton cli fonts
 console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
@@ -20,26 +24,33 @@ console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
 })));
 
 inquirer.prompt(cliQuestions).then((answers) => {
-  // removes whitespace of the answer
-  console.log(answers.static)
-
-  // appends json to the name of project that the user specified
-
-
-  //check is ssr folder exists if not create one
+  // check is ssr folder exists if not create one
   if (!fs.existsSync('./primessr')) {
     fs.mkdirSync('./primessr');
   }
 
   // fs.writeFileSync('./primessr/primeServer.js', getServerScript(answers));
   // fs.writeFileSync('./primessr/primeWebpack.js', getWebpackScript());
-  fs.writeFileSync('./primessr/primeHtml.html', createHtmlScript());
+  fs.writeFileSync('./primessr/primeCompare.html', createCompareScript());
+  fs.writeFileSync('./primessr/index.js', createIndexScript());
+  fs.writeFileSync('./primessr/server.js', createServerScript(answers));
 
-  fs.readFile(answers.parseJson, 'utf8', (error, result) => {
+
+  if (answers.hasRedux === 'Yes') {
+    fs.writeFileSync('./primessr/returnReduxHTML.js', createReduxHTMLScript(answers));
+  } else {
+    fs.writeFileSync('./primessr/returnHTML.js', createHTMLScript(answers));
+  }
+
+
+  fs.readFile('package.json', 'utf8', (error, result) => {
     if (error) throw error;
+    
 
     const tempObj = Object.assign({}, JSON.parse(result));
-    tempObj.scripts['prime:compare'] = '';
+    tempObj.scripts['prime:compare'] = `http-server npm run ${answers.startScript} && npm run prime:server`;
+    tempObj.scripts['prime:server'] = 'NODE_ENV=production node ./primessr/index.js';
+
     // tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --mode production';
     // tempObj.scripts['prime:start'] = 'node build/primeBundle.js';
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
