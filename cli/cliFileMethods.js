@@ -8,10 +8,12 @@ const folderDir = glob.sync('**/*/', { ignore: '**/node_modules/**' }).map((ele)
   return newDir;
 });
 const jsonFile = glob.sync('**/*package.json', { ignore: '**/node_modules/**', nodir: true });
-const fileList = glob.sync('**/*', { ignore: '**/node_modules/**', nodir: true });
+const fileList = glob.sync('**/*.{js,jsx}', { ignore: '**/node_modules/**', nodir: true });
 const htmlList = glob.sync('**/*.html', { ignore: '**/node_modules/**' });
 const packageJson = require('../package.json');
 const package = packageJson.scripts
+
+//work in progress
 const startScriptArr = [];
 for (const key in packageJson.scripts) {
   startScriptArr.push(packageJson.scripts[key]);

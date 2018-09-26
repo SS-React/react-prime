@@ -65,6 +65,32 @@ const cliQuestions = [
     },
   },
   {
+    type: 'list',
+    message: chalk.red('Are you using Redux?'),
+    name: 'hasRedux',
+    choices: [
+      {
+        name: 'Yes',
+      },
+      {
+        name: 'No',
+      },
+    ],
+  },
+  {
+    type: 'autocomplete',
+    name: 'store',
+    suggestOnly: true,
+    message: chalk.red('Type the path to your store creator:'),
+    source: cliFileMethods.searchFiles,
+    validate(answer) {
+      if (!fileList.includes(answer)) {
+        return 'Invalid entry point';
+      }
+      return true;
+    },
+  },
+  {
     type: 'autocomplete',
     name: 'component',
     suggestOnly: true,
@@ -90,31 +116,31 @@ const cliQuestions = [
       return true;
     },
   },
-  {
-    type: 'input', // type designates what type of prompt the user sees, creates a prompt that takes text as an answer
-    name: 'projectName', // name is the property the answer to this prompt is saved as
-    message: chalk.red('Input your project name'), // message is what the user sees on screen
-    validate(answer) {
-      // if a user typed nothing or only spaces, make the user type again
-      if (answer.length === 0 || answer.trim().length === 0) {
-        return 'You must type your project name';
-      }
-      return true;
-    },
-  },
-  {
-    type: 'list',
-    message: chalk.red('Would you like to run html comparison?'),
-    name: 'htmlTest',
-    choices: [
-      {
-        name: 'YES',
-      },
-      {
-        name: 'NO',
-      },
-    ],
-  },
+  // {
+  //   type: 'input', // type designates what type of prompt the user sees, creates a prompt that takes text as an answer
+  //   name: 'projectName', // name is the property the answer to this prompt is saved as
+  //   message: chalk.red('Input your project name'), // message is what the user sees on screen
+  //   validate(answer) {
+  //     // if a user typed nothing or only spaces, make the user type again
+  //     if (answer.length === 0 || answer.trim().length === 0) {
+  //       return 'You must type your project name';
+  //     }
+  //     return true;
+  //   },
+  // },
+  // {
+  //   type: 'list',
+  //   message: chalk.red('Would you like to run html comparison?'),
+  //   name: 'htmlTest',
+  //   choices: [
+  //     {
+  //       name: 'YES',
+  //     },
+  //     {
+  //       name: 'NO',
+  //     },
+  //   ],
+  // },
   // {
   //   type: 'checkbox',  //creates a list of items that can be toggled on or off
   //   message: 'What features would you like to add to your project? (select multiple)',
