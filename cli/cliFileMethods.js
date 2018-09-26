@@ -7,18 +7,16 @@ const folderDir = glob.sync('**/*/', { ignore: '**/node_modules/**' }).map((ele)
   const newDir = `${ele.slice(0, -1)}`;
   return newDir;
 });
-const jsonFile = glob.sync('**/*package.json', { ignore: '**/node_modules/**', nodir: true });
 const fileList = glob.sync('**/*.{js,jsx}', { ignore: '**/node_modules/**', nodir: true });
 const htmlList = glob.sync('**/*.html', { ignore: '**/node_modules/**' });
-const packageJson = require('../package.json');
-const package = packageJson.scripts
+// ---------------------------------------------------------------------------------------
+// NOTE: this was an attempt to read from the user's package.json
+// const packageJson = require('../package.json');
 
-//work in progress
-const startScriptArr = [];
-for (const key in packageJson.scripts) {
-  startScriptArr.push(packageJson.scripts[key]);
-}
-console.log(startScriptArr)
+// const startScriptArr = Object.keys(packageJson.scripts);
+// console.log(htmlList);
+// console.log(startScriptArr);
+// ---------------------------------------------------------------------------------------
 
 // cliFileMethods.getFileStructure = glob.sync('**/*.js', { ignore: 'node_modules/**' });
 // cliFileMethods.startScripts = (answers, input) => {
@@ -71,22 +69,21 @@ cliFileMethods.searchHtml = (answers, input) => {
   }));
 };
 
-cliFileMethods.parsePackageJson = (answers, input) => {
-  const userInput = input || '';
+// cliFileMethods.startScriptArr = (answers, input) => {
+//   const userInput = input || '';
 
-  return new Promise(((resolve) => {
-    const fuzzyResult = fuzzy.filter(userInput, jsonFile);
-    resolve(
-      fuzzyResult.map(ele => ele.original),
-    );
-  }));
-};
+//   return new Promise(((resolve) => {
+//     const fuzzyResult = fuzzy.filter(userInput, startScriptArr);
+//     resolve(
+//       fuzzyResult.map(ele => ele.original),
+//     );
+//   }));
+// };
 
 module.exports = {
   cliFileMethods,
   folderDir,
   fileList,
   htmlList,
-  jsonFile,
-  packageJson,
+  // startScriptArr,
 };
