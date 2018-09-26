@@ -1,4 +1,4 @@
-import { init, serve } from './../src/index.js';
+import { init, serve } from '../src/index.js';
 
 describe('Testing ./src files', () => {
   describe('index.js', () => {
@@ -9,7 +9,7 @@ describe('Testing ./src files', () => {
       const input = {
         html: './html',
         App: './App',
-        id: 'root'
+        id: 'root',
       };
       const result = init(input);
       expect(result.html).toBe('./html');
