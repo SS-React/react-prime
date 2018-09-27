@@ -13,6 +13,7 @@ const createReduxHTMLScript = require('../lib/returnReduxHTML.js');
 const createHTMLScript = require('../lib/returnHTML.js');
 const createIndexScript = require('../lib/index.js');
 const createServerScript = require('../lib/server.js');
+const createPrimeServer = require('../lib/createPrimeServer.js');
 
 
 // chalk adds color and weight ton cli fonts
@@ -34,6 +35,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
   fs.writeFileSync('./primessr/primeCompare.html', createCompareScript());
   fs.writeFileSync('./primessr/index.js', createIndexScript());
   fs.writeFileSync('./primessr/server.js', createServerScript(answers));
+  fs.writeFileSync('./primessr/primeServer.js', createPrimeServer());
 
 
   if (answers.hasRedux === 'Yes') {
@@ -48,7 +50,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
     
 
     const tempObj = Object.assign({}, JSON.parse(result));
-    tempObj.scripts['prime:compare'] = `http-server npm run ${answers.startScript} && npm run prime:server`;
+    tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/primeServer.js`;
     tempObj.scripts['prime:server'] = 'NODE_ENV=production node ./primessr/index.js';
 
     // tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --mode production';
