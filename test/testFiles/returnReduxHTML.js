@@ -1,5 +1,4 @@
-module.exports = (input) => {
-  return `// standard react modules
+// standard react modules
   import React from 'react';
   import { renderToString } from 'react-dom/server';
   // security middleware
@@ -18,21 +17,21 @@ module.exports = (input) => {
   /*
     NOTE: user path is relative to their root directory
   */
-  import createStore from '../${input.store}';
+  import createStore from '../createStore.js';
   
   // main entrypoint and manifest (included in CRA)
-  import App from '../${input.component}';
+  import App from '../App.js';
   import manifest from '../build/asset-manifest.json';
   
   // export middleware that returns stringified HTML from server
   export default (req, res) => {
     const injectHTML = (data, { html, title, meta, body, scripts, state }) => {
-      data = data.replace('<html>', \`<html \${html}>\`);
-      data = data.replace(/<title>.*?<\\/title>/g, title);
-      data = data.replace('</head>', \`\${meta}</head>\`);
+      data = data.replace('<html>', `<html ${html}>`);
+      data = data.replace(/<title>.*?<\/title>/g, title);
+      data = data.replace('</head>', `${meta}</head>`);
       data = data.replace(
         '<div id="root"></div>',
-        \`<div id="root">\${body}</div><script>window.__PRELOADED_STATE__ = \${state}</script>\`
+        `<div id="root">${body}</div><script>window.__PRELOADED_STATE__ = ${state}</script>`
       );
       data = data.replace('</body>', scripts.join('') + '</body>');
   
@@ -40,7 +39,7 @@ module.exports = (input) => {
     };
   
     fs.readFile(
-      path.resolve(__dirname, '../${input.rootHtml}'),
+      path.resolve(__dirname, '../undefined'),
       'utf8',
       (err, htmlData) => {
         if (err) {
@@ -87,7 +86,7 @@ module.exports = (input) => {
   
             // Let's format those assets into pretty <script> tags
             const extraChunks = extractAssets(manifest, modules).map(
-              c => \`<script type="text/javascript" src="/\${c}"></script>\`
+              c => `<script type="text/javascript" src="/${c}"></script>`
             );
   
             // We need to tell Helmet to compute the right meta tags, title, and such
@@ -100,14 +99,13 @@ module.exports = (input) => {
               meta: helmet.meta.toString(),
               body: routeMarkup,
               scripts: extraChunks,
-              state: JSON.stringify(store.getState()).replace(/</g, '\\u003c')
+              state: JSON.stringify(store.getState()).replace(/</g, '\u003c')
             });
   
             // We have all the final HTML, let's send it to the user already!
-            res.status(200).send(html);
+            res.send(html);
           }
         });
       }
     );
-  }`;
-  };
+  }

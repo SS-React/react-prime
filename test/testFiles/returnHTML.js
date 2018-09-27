@@ -1,5 +1,4 @@
-module.exports = (input) => {
-  return `// standard react modules
+// standard react modules
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 // security middleware
@@ -14,18 +13,18 @@ import path from 'path';
 import fs from 'fs';
 
 // main entrypoint and manifest (included in CRA)
-import App from '../${input.component}';
+import App from '../App.js';
 import manifest from '../build/asset-manifest.json';
 
 // export middleware that returns stringified HTML from server
 const returnHTML = (req, res) => {
   const injectHTML = (data, { html, title, meta, body, scripts }) => {
-    data = data.replace('<html>', \`<html \${html}>\`);
-    data = data.replace(/<title>.*?<\\/title>/g, title);
-    data = data.replace('</head>', \`\${meta}</head>\`);
+    data = data.replace('<html>', `<html ${html}>`);
+    data = data.replace(/<title>.*?<\/title>/g, title);
+    data = data.replace('</head>', `${meta}</head>`);
     data = data.replace(
       '<div id="root"></div>',
-      \`<div id="root">\${body}</div>\`
+      `<div id="root">${body}</div>`
     );
     data = data.replace('</body>', scripts.join('') + '</body>');
 
@@ -33,7 +32,7 @@ const returnHTML = (req, res) => {
   };
 
   fs.readFile(
-    path.resolve(__dirname, '../${input.rootHtml}'),
+    path.resolve(__dirname, '../undefined'),
     'utf8',
     (err, htmlData) => {
       if (err) {
@@ -75,7 +74,7 @@ const returnHTML = (req, res) => {
 
           // Let's format those assets into pretty <script> tags
           const extraChunks = extractAssets(manifest, modules).map(
-            c => \`<script type="text/javascript" src="/\${c}"></script>\`
+            c => `<script type="text/javascript" src="/${c}"></script>`
           );
 
           // We need to tell Helmet to compute the right meta tags, title, and such
@@ -91,11 +90,10 @@ const returnHTML = (req, res) => {
           });
 
           // We have all the final HTML, let's send it to the user already!
-          res.status(200).send(html);
+          res.send(html);
         }
       });
     }
   );
 }
-export default returnHTML`;
-};
+export default returnHTML
