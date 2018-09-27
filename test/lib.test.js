@@ -3,7 +3,7 @@ import createServerScript from '../lib/server';
 import createCompareScript from '../lib/createCompareHTML';
 import createHTMLScript from '../lib/returnHTML';
 import createReduxHTMLScript from '../lib/returnReduxHTML';
-import app from '../lib/tempserver';
+// import app from '../lib/tempserver';
 
 const fs = require('fs');
 const path = require('path');
@@ -16,15 +16,22 @@ describe(`Testing ./lib files`, () => {
     store: 'createStore.js'
   };
   
+  const mkdir = () => {
+    if (!fs.existsSync('./test/testFiles')) {
+      fs.mkdirSync('./test/testFiles');
+    }
+  }
+
   const deleteFile = () => {
-    fs.unlink(path.join(__dirname, './testFiles/index.js'), () => {});
-    fs.unlink(path.join(__dirname, './testFiles/server.js'), () => {});
-    fs.unlink(path.join(__dirname, 'primeCompare.html'), () => {});
-    fs.unlink(path.join(__dirname, 'returnHTML.js'), () => {});
-    fs.unlink(path.join(__dirname, 'returnReduxHTML.js'), () => {});
+    fs.unlinkSync(path.join(__dirname, './testFiles/index.js'));
+    fs.unlinkSync(path.join(__dirname, './testFiles/server.js'));
+    fs.unlinkSync(path.join(__dirname, './testFiles/primeCompare.html'));
+    fs.unlinkSync(path.join(__dirname, './testFiles/returnHTML.js'));
+    fs.unlinkSync(path.join(__dirname, './testFiles/returnReduxHTML.js'));
   };
 
   beforeAll(() => {
+    mkdir();
     deleteFile();
   });
 
@@ -83,11 +90,11 @@ describe(`Testing ./lib files`, () => {
       });
     });
   });
-  // describe(`tempserver.js`, () => {
-  //   test(`should start the server on port 5000`, () => {
-  //     request(app)
-  //       .get('/')
-  //       .expect(200, done)       
-  //   });
-  // });
+  xdescribe(`tempserver.js`, () => {
+    test(`should start the server on port 5000`, () => {
+      request(app)
+        .get('/')
+        .expect(200, done)       
+    });
+  });
 });
