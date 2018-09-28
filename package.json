@@ -16,6 +16,7 @@
     "webpack": "./node_modules/.bin/webpack",
     "build": "webpack"
   },
+  "preset": "jest-puppeteer",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andwong91/react-prime.git"
@@ -73,7 +74,9 @@
     "compression-webpack-plugin": "^2.0.0",
     "gulp-shell": "^0.6.5",
     "jest": "^23.6.0",
+    "jest-puppeteer": "^3.4.0",
     "nodemon": "^1.18.4",
+    "puppeteer": "^1.8.0",
     "supertest": "^3.3.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.19.1",
