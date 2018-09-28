@@ -47,7 +47,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
 
   fs.readFile('package.json', 'utf8', (error, result) => {
     if (error) throw error;
-    
+
 
     const tempObj = Object.assign({}, JSON.parse(result));
     tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/primeServer.js`;
