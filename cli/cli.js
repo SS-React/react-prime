@@ -51,8 +51,8 @@ inquirer.prompt(cliQuestions).then((answers) => {
 
     const tempObj = Object.assign({}, JSON.parse(result));
     tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/primeServer.js`;
-    tempObj.scripts['prime:sw'] = 'npx workbox wizard && npx workbox generateSW workbox-config.js';
     tempObj.scripts['prime:server'] = 'NODE_ENV=production node ./primessr/index.js';
+    tempObj.scripts['prime:sw'] = 'npx workbox wizard && npx workbox generateSW workbox-config.js';
 
     // tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --mode production';
     // tempObj.scripts['prime:start'] = 'node build/primeBundle.js';
