@@ -3,6 +3,7 @@ import createServerScript from '../lib/server';
 import createCompareScript from '../lib/createCompareHTML';
 import createHTMLScript from '../lib/returnHTML';
 import createReduxHTMLScript from '../lib/returnReduxHTML';
+import createPrimeServer from '../lib/createPrimeServer';
 // import app from '../lib/tempserver';
 
 const fs = require('fs');
@@ -87,6 +88,17 @@ describe(`Testing ./lib files`, () => {
       fs.writeFileSync(path.join(__dirname, './testFiles/returnReduxHTML.js'), createReduxHTMLScript(inputObj));
       fs.readFileSync(path.join(__dirname, './testFiles/returnReduxHTML.js'), (err, data) => {
         expect(createReduxHTMLScript(inputObj)).toBe(data);
+      });
+    });
+  });
+  describe(`createPrimeServer.js`, () => {
+    test(`should return a string`, () => {
+      expect(typeof createPrimeServer()).toBe('string');
+    });
+    test(`output string should match contents of file created from the string`, () => {
+      fs.writeFileSync(path.join(__dirname, './testFiles/primeServer.js'), createPrimeServer());
+      fs.readFileSync(path.join(__dirname, './testFiles/primeServer.js'), (err, data) => {
+        expect(createPrimeServer()).toBe(data);
       });
     });
   });
