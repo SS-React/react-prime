@@ -15,12 +15,6 @@ npm install --save react-prime
 ```
 
 
-- Install dependencies
-
-```
-npm install —save http-server concurrently md5-file ajv ignore-styles react-loadable react-helmet react-router react-frontload workbox-cli
-```
-
 ### Server-Side Rendering
 
 The process of SSR with our library has been automated through a CLI.
