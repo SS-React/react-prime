@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # React Prime
 
 Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications.
@@ -13,6 +12,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```
 npm install --save react-prime
+```
+
+- Install dependencies
+
+```
+npm install —save http-server concurrently md5-file ajv ignore-styles react-loadable react-helmet react-router react-frontload workbox-cli
 ```
 
 ### Server-Side Rendering
@@ -68,9 +73,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Thank you to [Patrick Cason](https://medium.com/@cereallarceny/server-side-rendering-in-create-react-app-with-all-the-goodies-without-ejecting-4c889d7db25e) for his excellent article on SSR.
 * Huge shoutout to [Clariz Mariano](https://github.com/havengoer) for the logo. You can find more of her work on [dribbble](https://dribbble.com/clarizmariano)!
-=======
-Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications by leveraging service workers.
-
-Use `npm react-prime` to install react-prime.
-To install dependencies, paste `npm i -S http-server concurrently md5-file ajv ignore-styles react-loadable react-helmet react-router workbox-cli` after installing react-prime.
->>>>>>> sw
