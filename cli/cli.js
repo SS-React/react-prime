@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const fs = require('fs');
-const httpserver = require('http-server')
+const httpserver = require('http-server');
 const shell = require('shelljs');
 
 const cliQuestions = require('./cliQuestions.js');
@@ -14,6 +14,8 @@ const createHTMLScript = require('../lib/returnHTML.js');
 const createIndexScript = require('../lib/index.js');
 const createServerScript = require('../lib/server.js');
 const createPrimeServer = require('../lib/createPrimeServer.js');
+
+
 
 
 // chalk adds color and weight ton cli fonts
@@ -36,8 +38,16 @@ inquirer.prompt(cliQuestions).then((answers) => {
   fs.writeFileSync('./primessr/index.js', createIndexScript());
   fs.writeFileSync('./primessr/server.js', createServerScript(answers));
   fs.writeFileSync('./primessr/primeServer.js', createPrimeServer());
-
-
+  fs.readFile('primeLogo.png', (err, data) => {
+  fs.writeFile(`./primessr/${answers.static}`, data, 'binary', (err) => {
+      if (err) {
+        console.log('image did not load')
+      } else {
+        console.log('image loaded')
+      }
+    });
+  });
+  
   if (answers.hasRedux === 'Yes') {
     fs.writeFileSync('./primessr/returnReduxHTML.js', createReduxHTMLScript(answers));
   } else {

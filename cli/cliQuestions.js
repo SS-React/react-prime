@@ -17,9 +17,6 @@ const cliQuestions = [
         name: 'Server-side rendering only',
       },
       {
-        name: 'Service worker caching for offline functionality',
-      },
-      {
         name: 'Server-side rendering with service worker caching for offline functionality',
       },
     ],
