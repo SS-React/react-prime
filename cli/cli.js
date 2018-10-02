@@ -8,12 +8,11 @@ const httpserver = require('http-server')
 const shell = require('shelljs');
 
 const cliQuestions = require('./cliQuestions.js');
-const createCompareScript = require('../lib/createCompareHTML.js');
-const createReduxHTMLScript = require('../lib/returnReduxHTML.js');
+const createCompareScript = require('../lib/performanceTest/createCompareHTML.js');
 const createHTMLScript = require('../lib/returnHTML.js');
 const createIndexScript = require('../lib/index.js');
 const createServerScript = require('../lib/server.js');
-const createPrimeServer = require('../lib/createPrimeServer.js');
+const createPrimeServer = require('../lib/performanceTest/createPrimeServer.js');
 
 
 // chalk adds color and weight ton cli fonts
@@ -28,50 +27,27 @@ inquirer.prompt(cliQuestions).then((answers) => {
   // check is ssr folder exists if not create one
   if (!fs.existsSync('./primessr')) {
     fs.mkdirSync('./primessr');
+    fs.mkdirSync('./primessr/performanceTest');
+    fs.mkdirSync('./primessr/performanceTest/reports');
   }
 
-  // fs.writeFileSync('./primessr/primeServer.js', getServerScript(answers));
-  // fs.writeFileSync('./primessr/primeWebpack.js', getWebpackScript());
-  fs.writeFileSync('./primessr/primeCompare.html', createCompareScript());
+  fs.writeFileSync('./primessr/performanceTest/primeCompare.html', createCompareScript(answers));
+  fs.writeFileSync('./primessr/performanceTest/primeServer.js', createPrimeServer());
   fs.writeFileSync('./primessr/index.js', createIndexScript());
   fs.writeFileSync('./primessr/server.js', createServerScript(answers));
-  fs.writeFileSync('./primessr/primeServer.js', createPrimeServer());
-
-
-  if (answers.hasRedux === 'Yes') {
-    fs.writeFileSync('./primessr/returnReduxHTML.js', createReduxHTMLScript(answers));
-  } else {
-    fs.writeFileSync('./primessr/returnHTML.js', createHTMLScript(answers));
-  }
-
-
+  fs.writeFileSync('./primessr/returnHTML.js', createHTMLScript(answers));
+  
   fs.readFile('package.json', 'utf8', (error, result) => {
     if (error) throw error;
 
-
     const tempObj = Object.assign({}, JSON.parse(result));
-    tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/primeServer.js`;
+    tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/performanceTest/primeServer.js`;
     tempObj.scripts['prime:server'] = 'NODE_ENV=production node ./primessr/index.js';
-    tempObj.scripts['prime:sw'] = 'npx workbox wizard && npx workbox generateSW workbox-config.js';
-
-    // tempObj.scripts['prime:build'] = 'webpack --config primeWebpack.js --mode production';
-    // tempObj.scripts['prime:start'] = 'node build/primeBundle.js';
+    tempObj.scripts['prime:webpack'] = 'webpack --config primeWebpack.config.js';
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
-    // shell.exec('npm run prime:build');
-    // shell.exec('npm run prime:start');
   });
 
-  if (answers.choiceInstall === 'Server-side rendering only') {
-    // console.log('Starting server...');
-    // startServer();
-  } else if (answers.choiceInstall === 'Service worker caching for offline functionality') {
-    // console.log('Installing Service Worker...');
-    // installWorker();
-  } else {
-    // console.log('Starting server and installing Service Worker');
-    // installWorker();
-    // startServer();
-  }
-
-  // if (answers.htmlTest === yes)
+  console.log(chalk.blue(`\n---------------Completed---------------\n`));
+  console.log(chalk.blue(`Run 'npm run prime:compare' to see a comparison of your website`));
+  console.log(chalk.blue(`Or, run 'npm run prime:server' to see an SSR version of your app\n\n`));
 });
