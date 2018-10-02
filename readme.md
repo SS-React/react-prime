@@ -1,4 +1,4 @@
-# React Prime ![alt text](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)
+# React Prime | ![alt text](https://david-dm.org/andyahn91/react-prime.svg) ![alt text](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)
 
 Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications.
 
