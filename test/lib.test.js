@@ -1,20 +1,18 @@
 import createIndexScript from '../lib/index';
 import createServerScript from '../lib/server';
-import createCompareScript from '../lib/createCompareHTML';
 import createHTMLScript from '../lib/returnHTML';
-import createReduxHTMLScript from '../lib/returnReduxHTML';
-import createPrimeServer from '../lib/createPrimeServer';
-// import app from '../lib/tempserver';
+import createCompareScript from '../lib/performanceTest/createCompareHTML';
+import createPrimeServer from '../lib/performanceTest/createPrimeServer';
 
 const fs = require('fs');
 const path = require('path');
-const request = require('supertest');
 
 describe(`Testing ./lib files`, () => {
   const inputObj = {
     static: 'build',
     component: 'App.js',
-    store: 'createStore.js'
+    rootHtml: 'index.html',
+    port: 3000
   };
   
   const mkdir = () => {
@@ -22,13 +20,14 @@ describe(`Testing ./lib files`, () => {
       fs.mkdirSync('./test/testFiles');
     }
   }
+  fs.writeFileSync(path.join(__dirname, './testFiles/primeCompare.html'))
 
   const deleteFile = () => {
     fs.unlinkSync(path.join(__dirname, './testFiles/index.js'));
     fs.unlinkSync(path.join(__dirname, './testFiles/server.js'));
     fs.unlinkSync(path.join(__dirname, './testFiles/primeCompare.html'));
     fs.unlinkSync(path.join(__dirname, './testFiles/returnHTML.js'));
-    fs.unlinkSync(path.join(__dirname, './testFiles/returnReduxHTML.js'));
+    fs.unlinkSync(path.join(__dirname, './testFiles/primeServer.js'));
   };
 
   beforeAll(() => {
@@ -60,12 +59,12 @@ describe(`Testing ./lib files`, () => {
   });
   describe(`primeCompare.html`, () => {
     test(`should return a string`, () => {
-      expect(typeof createCompareScript()).toBe('string');
+      expect(typeof createCompareScript(inputObj)).toBe('string');
     });
     test(`output string should match contents of file created from the string`, () => {
-      fs.writeFileSync(path.join(__dirname, './testFiles/primeCompare.html'), createCompareScript());
+      fs.writeFileSync(path.join(__dirname, './testFiles/primeCompare.html'), createCompareScript(inputObj));
       fs.readFileSync(path.join(__dirname, './testFiles/primeCompare.html'), (err, data) => {
-        expect(createCompareScript()).toBe(data);
+        expect(createCompareScript(inputObj)).toBe(data);
       });
     });
   });
@@ -80,17 +79,6 @@ describe(`Testing ./lib files`, () => {
       });
     });
   });
-  describe(`returnReduxHTML.js`, () => {
-    test(`should return a string`, () => {
-      expect(typeof createReduxHTMLScript(inputObj)).toBe('string');
-    });
-    test(`output string should match contents of file created from the string`, () => {
-      fs.writeFileSync(path.join(__dirname, './testFiles/returnReduxHTML.js'), createReduxHTMLScript(inputObj));
-      fs.readFileSync(path.join(__dirname, './testFiles/returnReduxHTML.js'), (err, data) => {
-        expect(createReduxHTMLScript(inputObj)).toBe(data);
-      });
-    });
-  });
   describe(`createPrimeServer.js`, () => {
     test(`should return a string`, () => {
       expect(typeof createPrimeServer()).toBe('string');
@@ -100,13 +88,6 @@ describe(`Testing ./lib files`, () => {
       fs.readFileSync(path.join(__dirname, './testFiles/primeServer.js'), (err, data) => {
         expect(createPrimeServer()).toBe(data);
       });
-    });
-  });
-  xdescribe(`tempserver.js`, () => {
-    test(`should start the server on port 5000`, () => {
-      request(app)
-        .get('/')
-        .expect(200, done)       
     });
   });
 });
