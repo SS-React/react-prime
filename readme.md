@@ -1,4 +1,4 @@
-# React Prime &nbsp [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/react-prime.svg)](https://badge.fury.io/js/react-prime) ![alt text](https://travis-ci.org/travis-ci/travis-web.svg?branch=master) ![alt text](https://david-dm.org/andyahn91/react-prime.svg)
+# React Prime &nbsp; [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/react-prime.svg)](https://badge.fury.io/js/react-prime) ![alt text](https://travis-ci.org/travis-ci/travis-web.svg?branch=master) ![alt text](https://david-dm.org/andyahn91/react-prime.svg)
 
 Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications.
 
