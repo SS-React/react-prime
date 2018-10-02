@@ -47,7 +47,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
   });
 
-  console.log(chalk.blue(`\n---------------Completed---------------\n`));
-  console.log(chalk.blue(`Run 'npm run prime:compare' to see a comparison of your website`));
-  console.log(chalk.blue(`Or, run 'npm run prime:server' to see an SSR version of your app\n\n`));
+  console.log(chalk.rgb(0, 127, 255)(`\n---------------Completed---------------\n`));
+  console.log(chalk.rgb(0, 127, 255)(`Run 'npm run prime:compare' to see a comparison of your website`));
+  console.log(chalk.rgb(0, 127, 255)(`Or, run 'npm run prime:server' to see an SSR version of your app\n\n`));
 });
