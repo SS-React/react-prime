@@ -16,7 +16,7 @@ const cliQuestions = [
     source: cliFileMethods.searchFolders,
     validate(answer) {
       if (!folderDir.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
@@ -27,7 +27,7 @@ const cliQuestions = [
     message: chalk.rgb(46, 255, 0)('Type in the name of the npm script that starts your server:'),
     validate(answer) {
       if (answer.length === 0) {
-        return 'Enter a valid name';
+        return chalk.rgb(255, 0, 0).bold('Enter a valid name');
       }
       return true;
     },
@@ -38,7 +38,7 @@ const cliQuestions = [
     message: chalk.rgb(46, 255, 0)('Type in the port number of your client side server:'),
     validate(answer) {
       if (answer.length === 0 || typeof JSON.parse(answer) !== 'number') {
-        return 'Enter a valid number';
+        return chalk.rgb(255, 0, 0).bold('Enter a valid number');
       }
       return true;
     },
@@ -51,7 +51,7 @@ const cliQuestions = [
     source: cliFileMethods.searchFiles,
     validate(answer) {
       if (!fileList.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
@@ -64,7 +64,7 @@ const cliQuestions = [
     source: cliFileMethods.searchHtml,
     validate(answer) {
       if (!htmlList.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
