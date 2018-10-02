@@ -15,9 +15,6 @@ const createIndexScript = require('../lib/index.js');
 const createServerScript = require('../lib/server.js');
 const createPrimeServer = require('../lib/createPrimeServer.js');
 
-
-
-
 // chalk adds color and weight ton cli fonts
 console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
   // chalk is setting the color etc. of large text and background, figlet is making the large text

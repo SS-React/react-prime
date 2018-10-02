@@ -5,8 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.js'),
-  target: 'node',
+  entry: './cli/cli.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -17,7 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
-        loader: 'babel-loader',
+        loader: ['babel-loader', 'shebang-loader'],
         exclude: /node_modules/,
       },
     ],
