@@ -12,11 +12,11 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'static',
     suggestOnly: true,
-    message: chalk.green('Type the directory containing your bundle:'),
+    message: chalk.rgb(46, 255, 0)('Type the directory containing your bundle:'),
     source: cliFileMethods.searchFolders,
     validate(answer) {
       if (!folderDir.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
@@ -24,10 +24,10 @@ const cliQuestions = [
   {
     type: 'input',
     name: 'startScript',
-    message: chalk.green('Type in the name of the npm script that starts your server:'),
+    message: chalk.rgb(46, 255, 0)('Type in the name of the npm script that starts your server:'),
     validate(answer) {
       if (answer.length === 0) {
-        return 'Enter a valid name';
+        return chalk.rgb(255, 0, 0).bold('Enter a valid name');
       }
       return true;
     },
@@ -35,10 +35,10 @@ const cliQuestions = [
   {
     type: 'input',
     name: 'port',
-    message: chalk.green('Type in the port number of your client side server:'),
+    message: chalk.rgb(46, 255, 0)('Type in the port number of your client side server:'),
     validate(answer) {
       if (answer.length === 0 || typeof JSON.parse(answer) !== 'number') {
-        return 'Enter a valid number';
+        return chalk.rgb(255, 0, 0).bold('Enter a valid number');
       }
       return true;
     },
@@ -47,11 +47,11 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'component',
     suggestOnly: true,
-    message: chalk.green('Type the path of your root component:'),
+    message: chalk.rgb(46, 255, 0)('Type the path of your root component:'),
     source: cliFileMethods.searchFiles,
     validate(answer) {
       if (!fileList.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
@@ -60,11 +60,11 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'rootHtml',
     suggestOnly: true,
-    message: chalk.green('Type the path of the HTML file containing the root div:'),
+    message: chalk.rgb(46, 255, 0)('Type the path of the HTML file containing the root div:'),
     source: cliFileMethods.searchHtml,
     validate(answer) {
       if (!htmlList.includes(answer)) {
-        return 'Invalid entry point';
+        return chalk.rgb(255, 0, 0).bold('Invalid entry point');
       }
       return true;
     },
