@@ -4,8 +4,6 @@ const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
 const fs = require('fs');
-const httpserver = require('http-server')
-const shell = require('shelljs');
 
 const cliQuestions = require('./cliQuestions.js');
 const createHTMLScript = require('../lib/returnHTML.js');
