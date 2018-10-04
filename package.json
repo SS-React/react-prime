@@ -1,6 +1,6 @@
 {
   "name": "react-prime",
-  "version": "1.0.0",
+  "version": "0.0.6",
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "./cli/cli.js",
   "directories": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andwong91/react-prime.git"
+    "url": "git+https://github.com/SS-React/react-prime"
   },
   "bin": {
     "prime": "./build/bundle.js"
@@ -36,9 +36,9 @@
   "author": "SS-React",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andwong91/react-prime/issues"
+    "url": "https://github.com/SS-React/react-prime/issues"
   },
-  "homepage": "https://github.com/andwong91/react-prime#readme",
+  "homepage": "https://github.com/SS-React/react-prime#readme",
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
