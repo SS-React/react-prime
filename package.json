@@ -21,7 +21,7 @@
     "url": "git+https://github.com/andwong91/react-prime.git"
   },
   "bin": {
-    "prime": "./cli/cli.js"
+    "prime": "./build/bundle.js"
   },
   "keywords": [
     "react",
@@ -75,6 +75,7 @@
     "gulp-shell": "^0.6.5",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
+    "shebang-loader": "0.0.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
