@@ -36,8 +36,8 @@ inquirer.prompt(cliQuestions).then((answers) => {
     const tempObj = Object.assign({}, JSON.parse(result));
     tempObj.scripts['prime:compare'] = `npm run ${answers.startScript} & npm run prime:server & node ./primessr/performanceTest/primeServer.js`;
     tempObj.scripts['prime:server'] = 'NODE_ENV=production node ./primessr/index.js';
-    tempObj.scripts['prime:CSRreport'] = `lighthouse --config-path=./primessr/performanceTest/custom-config.js --output html --output-path ./primessr/performanceTest/reports/csr-report.html http://localhost:${answers.port}`
-    tempObj.scripts['prime:SSRreport'] = `lighthouse --config-path=./primessr/performanceTest/custom-config.js --output html --output-path ./primessr/performanceTest/reports/ssr-report.html http://localhost:8080`
+    tempObj.scripts['prime:CSRreport'] = `lighthouse --config-path=./primessr/performanceTest/custom-config.js --output html --output-path ./primessr/performanceTest/reports/csr-report.html http://localhost:${answers.port}`;
+    tempObj.scripts['prime:SSRreport'] = 'lighthouse --config-path=./primessr/performanceTest/custom-config.js --output html --output-path ./primessr/performanceTest/reports/ssr-report.html http://localhost:8080';
     fs.writeFileSync('package.json', JSON.stringify(tempObj, null, 2));
   });
 
@@ -48,7 +48,7 @@ inquirer.prompt(cliQuestions).then((answers) => {
   fs.writeFileSync('./primessr/server.js', createServerScript(answers));
   fs.writeFileSync('./primessr/returnHTML.js', createHTMLScript(answers));
 
-  console.log(chalk.blue(`\n---------------Completed---------------\n`));
-  console.log(chalk.blue(`Run 'npm run prime:compare' to see a comparison of your website`));
-  console.log(chalk.blue(`Or, run 'npm run prime:server' to see an SSR version of your app\n\n`));
+  console.log(chalk.blue('\n---------------Completed---------------\n'));
+  console.log(chalk.blue('Run "npm run prime:compare" to see a comparison of your website'));
+  console.log(chalk.blue('Or, run "npm run prime:server" to see an SSR version of your app\n\n'));
 });
