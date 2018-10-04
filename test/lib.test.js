@@ -7,7 +7,7 @@ import createPrimeServer from '../lib/performanceTest/createPrimeServer';
 const fs = require('fs');
 const path = require('path');
 
-describe(`Testing ./lib files`, () => {
+describe('Testing ./lib files', () => {
   const inputObj = {
     static: 'build',
     component: 'App.js',

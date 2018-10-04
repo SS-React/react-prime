@@ -1,5 +1,15 @@
 #!/usr/bin/env node
 
+/**
+ * This file is used to execute the CLI for react-prime. It creates a /primessr directory
+ * in the user's project that contains five files:
+ * 1. index.js
+ * 2. server.js
+ * 3. returnHTML.js
+ * 4. primeCompare.html, and
+ * 5. primeServer.js
+ */
+
 const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
