@@ -1,6 +1,6 @@
 {
   "name": "react-prime",
-  "version": "1.0.0",
+  "version": "0.0.5",
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "./cli/cli.js",
   "directories": {
