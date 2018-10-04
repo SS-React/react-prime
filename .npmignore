@@ -3,3 +3,6 @@ src
 .babelrc
 .gitignore
 test/testFiles/*
+lib
+cli
+webpack.config.js
