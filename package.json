@@ -55,6 +55,7 @@
     "inquirer": "^6.2.0",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "inquirer-checkbox-plus-prompt": "^1.0.1",
+    "lighthouse": "^3.2.1",
     "path": "^0.12.7",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
