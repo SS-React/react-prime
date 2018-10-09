@@ -5,7 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: patgit h.join(__dirname),
+  entry: path.join(__dirname),
   target: 'node',
   output: {
     path: path.resolve(__dirname, 'build'),

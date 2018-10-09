@@ -14,7 +14,8 @@
   "scripts": {
     "test": "jest --detectOpenHandles",
     "webpack": "./node_modules/.bin/webpack",
-    "build": "webpack"
+    "build": "webpack",
+    "roll:build": "rollup --config"
   },
   "repository": {
     "type": "git",
@@ -61,7 +62,10 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "rollup": "^0.66.4",
+    "rollup-plugin-terser": "^3.0.0",
+    "uglify-js": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
@@ -72,6 +76,10 @@
     "compression-webpack-plugin": "^2.0.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-uglify": "^6.0.0",
     "shebang-loader": "0.0.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.19.1",
