@@ -5,8 +5,8 @@ https://ss-react.github.io/react-prime/
 
 ## Please Note
 
-This library has been developed to work with Create-React-Apps exclusively.
-Some depenecies that rely on window object before checking will not be compatable with React-Prime.
+This library has been developed to work with Create-React-Apps exclusively. /&
+Some depenecies that rely on window object before checking if window exists will not be compatable with React-Prime.
 
 ## Getting Started
 
