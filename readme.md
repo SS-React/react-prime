@@ -9,10 +9,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-- Local installation
+Local installation
 
 ```
 npm install --save react-prime
+```
+Then, install the required dependencies
+```
+npm i @babel/register react-frontload react-helmet react-loadable md5-file
 ```
 
 
