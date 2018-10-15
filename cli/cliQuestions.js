@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const chalkAnimation = require('chalk-animation')
 
 const {
   cliFileMethods, folderDir, fileList, htmlList,
