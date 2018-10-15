@@ -12,17 +12,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "webpack": "./node_modules/.bin/webpack",
-    "build": "webpack",
-    "roll:build": "rollup --config"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SS-React/react-prime"
   },
   "bin": {
-    "prime": "./build/bundle.js"
+    "prime": "./cli/cli.js"
   },
   "keywords": [
     "react",
@@ -64,27 +61,17 @@
     "react-dom": "^16.5.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "rollup": "^0.66.4",
-    "rollup-plugin-terser": "^3.0.0",
     "uglify-js": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.2",
-    "compression-webpack-plugin": "^2.0.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-multi-entry": "^2.0.2",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-uglify": "^6.0.0",
-    "shebang-loader": "0.0.1",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-node-externals": "^1.7.2"
+    "shebang-loader": "0.0.1"
   }
 }
