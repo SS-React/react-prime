@@ -31,8 +31,6 @@ console.log((chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
   verticalLayout: 'default',
 }))));
 
-chalkAnimation.radar('ReactPrimeReactPrimeReactPrimeReactPrimeReactPrimeReact')
-
 inquirer.prompt(cliQuestions).then((answers) => {
   // check is ssr folder exists if not create one
   if (!fs.existsSync('./primessr')) {
