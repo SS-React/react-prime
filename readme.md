@@ -3,7 +3,7 @@
 Library to effortlessly convert your non-SSR React applications into responsive, SSR React applications.
 https://ss-react.github.io/react-prime/
 
-## Please Note:
+## Please Note
 
 This library has been developed to work with Create-React-Apps exclusively.
 Some depenecies that rely on window object before checking will not be compatable with React-Prime.
