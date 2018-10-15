@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const chalkAnimation = require('chalk-animation')
 
 const {
   cliFileMethods, folderDir, fileList, htmlList,
@@ -60,7 +61,7 @@ const cliQuestions = [
     type: 'autocomplete',
     name: 'rootHtml',
     suggestOnly: true,
-    message: chalk.rgb(46, 255, 0)('Type the path of the HTML file containing the root div:'),
+    message: chalk.rgb(46, 255, 0)('Type the path of the /build HTML file containing the root div:'),
     source: cliFileMethods.searchHtml,
     validate(answer) {
       if (!htmlList.includes(answer)) {

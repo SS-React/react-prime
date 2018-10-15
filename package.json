@@ -1,6 +1,6 @@
 {
   "name": "react-prime",
-  "version": "0.0.7",
+  "version": "0.1.1",
   "description": "Transform your native, non-SSR React applications into responsive, and user friendly applications through SSR.",
   "main": "./cli/cli.js",
   "directories": {
@@ -12,16 +12,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "webpack": "./node_modules/.bin/webpack",
-    "build": "webpack"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SS-React/react-prime"
   },
   "bin": {
-    "prime": "./build/bundle.js"
+    "prime": "./cli/cli.js"
   },
   "keywords": [
     "react",
@@ -45,6 +43,8 @@
   "dependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "chalk": "^2.4.1",
+    "chalk-animation": "^1.6.0",
+    "cli-progress": "^2.1.0",
     "colors": "^1.3.2",
     "express": "^4.16.4",
     "figlet": "^1.2.1",
@@ -60,20 +60,18 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "uglify-js": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.4",
-    "compression-webpack-plugin": "^2.0.0",
+    "babel-loader": "^8.0.2",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
-    "shebang-loader": "0.0.1",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-node-externals": "^1.7.2"
+    "shebang-loader": "0.0.1"
   }
 }

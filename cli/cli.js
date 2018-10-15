@@ -23,14 +23,13 @@ const createCompareScript = require('../lib/performanceTest/createCompareHTML.js
 const createPrimeServer = require('../lib/performanceTest/createPrimeServer.js');
 const createConfigScript = require('../lib/performanceTest/createConfig.js');
 
-
 // chalk adds color and weight ton cli fonts
-console.log(chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
+console.log((chalk.rgb(46, 255, 0).bgBlack.bold(figlet.textSync('React Prime', {
   // chalk is setting the color etc. of large text and background, figlet is making the large text
   font: 'Big',
   horizontalLayout: 'default',
   verticalLayout: 'default',
-})));
+}))));
 
 inquirer.prompt(cliQuestions).then((answers) => {
   // check is ssr folder exists if not create one
