@@ -40,7 +40,7 @@ scripts: {
 npm run prime
 ```
 <hr>
-** Add picture of CLI here **
+<img src="http://zillberrycom.fatcow.com/react-prime/react-prime-cli.png" width="650">
 <hr>
 
 ## Deployment
