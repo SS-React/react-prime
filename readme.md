@@ -61,6 +61,19 @@ Then, an SSR version of your application is automatically hosted on ```http://lo
 
 ## Performance Testing
 
+To view side by side comparison of CSR and SSR renders:
+```
+prime:compare
+```
+
+While Prime compare server is running, execute the following to generate Lighthouse reports:
+```
+prime:CSRreport
+```
+```
+prime:SSRreport
+```
+
 ## Authors
 
 * [Andrew Wong](https://github.com/andwong91)
