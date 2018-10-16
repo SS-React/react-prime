@@ -21,7 +21,7 @@ npm install --save react-prime
 ```
 Then, install the required dependencies
 ```
-npm i @babel/register react-frontload react-helmet react-loadable md5-file
+npm i inquirer @babel/core @babel/plugin-syntax-dynamic-import @babel/preset-env @babel/preset-react @babel/register react-frontload react-helmet react-loadable md5-file
 ```
 
 
